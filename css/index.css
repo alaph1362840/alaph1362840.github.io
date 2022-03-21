@@ -1,0 +1,101 @@
+.barraNavegacion{
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgb(92, 78, 51) !important;
+}
+
+.cbreproduccion{
+    background-color: rgb(235, 218, 198);
+}
+
+.botonStop{
+    background-color: rgb(75, 75, 72);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    
+}
+
+.botonPlay{
+    background-color: olivedrab;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: white;
+}
+
+#btnAnterior{
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgb(218, 199, 150);
+    color: rgb(255, 255, 255);
+    border-color: rgb(165, 160, 119);    
+}
+
+#btnSiguiente{
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: rgb(218, 199, 150);
+    color: rgb(255, 255, 255);
+    border-color: rgb(165, 160, 119);   
+}
+
+.cPagina{
+    border-style: solid;
+    border-width: 1px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgb(243, 243, 214);
+}
+/* Es el boton de 3 lineas para regresar a la pagina que contiene los capitulos de la novela */
+.cmenu{
+    border-style: solid;
+    border-width: 1px;
+    border-top-left-radius: 10px;
+    background-color: rgb(165, 113, 113);
+    color: white;
+}
+
+.pagina{
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-top-right-radius: 10px;
+}
+
+.boton{
+    cursor: pointer;
+    user-select: none;
+}
+
+.boton:hover{
+    opacity: 90%;
+    transform: scale(1.02, 1.02);
+}
+
+.boton:active{
+    transform: scale(1, 1);
+}
+
+.rslider{
+    background-color: white;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 2px;
+}
+
+#texto{
+    background: url("../img/Renglon01.svg"); 
+    background-repeat: repeat-y;
+    background-attachment: local;
+    background-size: auto 50px;
+    width: 100%; 
+    font: normal 14px verdana; 
+    line-height: 25px;
+    padding-left: 90px;
+}
