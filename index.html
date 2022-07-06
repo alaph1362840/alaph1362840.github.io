@@ -1,112 +1,307 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" >
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Definir autor -->
+    <meta name="author" content="Brayan D. A. C." />
+    <title>Brayan Acosta</title>
+
     <!-- Establece el icono de la pagina -->
-    <link rel="icon" type="image/gif" href="img/Logo.png" /> 
-    <title>LectorNovelasLigeras</title>
-    <!-- LIBRERIAS CSS -->
-    <link rel="stylesheet" href="librerias/bootstrap-5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="librerias/FontAwesome/css/all.min.css">    
-    <link rel="stylesheet" href="librerias/alertifyjs/css/alertify.min.css">
-    <!-- <link rel="stylesheet" href="librerias/alertifyjs/css/themes/default.min.css"> -->
-    <link rel="stylesheet" href="librerias/alertifyjs/css/themes/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/Logo_03.png" />
     
-    <!-- MIS CSS -->
+    <!-- LIBRERIAS -->
+    <link rel="stylesheet" href="librerias/bootstrap-5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="librerias/fontawesome-5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="librerias/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" href="librerias/tipografia/tipografia.css">
+    <!-- MI CSS -->
     <link rel="stylesheet" href="css/index.css">
+
+    <!-- LIBRERIAS JS -->
+    <script src="librerias/scrollreveal.min.js"></script>
+
 </head>
 <body>
-    <!-- Barra de Navegacion -->    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mx-lg-3 ps-3 pe-lg-2 mt-2 barraNavegacion">
-        <!-- LOGO Y NOMBRE DE EMPRESA -->
-        <a class="navbar-brand" href="#">
-            <img src="img/Logo.svg" class="me-2" alt="logo" style="width:40px;"> BDAC SOFTWARE
-        </a>  
-        <!-- TRES PUNTOS BOTON OCULTO QUE APARECE CUANDO LA PANTALLA ES PEQUENHA -->
-        <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- LINKS PAGINA -->
-        <div id="collapsibleNavbar" class="navbar-collapse justify-content-end" >
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link active" href="#"><i class="fas fa-book me-1"></i> Novelas</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="miTexto.html"><i class="fas fa-feather-alt me-1"></i> MiTexto</a>
-                </li>                
-                <li class="nav-item">
-                    <a class="nav-link" href="#" ><i class="fas fa-skiing-nordic me-1"></i> Salir</a>
-                </li>
-            </ul>
+    <!-- BARRA DE NAVEGACION HORIZONTAL-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top barraDeNavegacion d-lg-none d-block">
+        <div class="container-fluid">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">
+                <img src="img/FotoPersonal.png" class="mr-2" alt="logo" style="width:40px;">
+                &nbsp; Brayan Acosta
+            </a>
+            <!-- Toggler/collapsibe Button -->            
+            <button id="btnNav" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav ">
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-language"></i> <i id="barLenguaje2" class="inav">Lenguaje</i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li onclick="traducir(0)"><a id="bandEspana2" class="dropdown-item" href="#"><img src="img/banderaEspana.png" alt="Bandera de España" class="imgNavBarl"> Español</a></li>
+                            <li onclick="traducir(1)"><a id="bandIngles2" class="dropdown-item" href="#"><img src="img/banderaUsa.png" alt="Bandera de USA" class="imgNavBarl"> English</a></li>
+                            <li onclick="traducir(2)"><a id="bandFrances2" class="dropdown-item" href="#"><img src="img/banderaFrancia.png" alt="Bandera de Francia" class="imgNavBarl"> Français</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a id="navIni" class="nav-link active" href="#inicio"> Inicio</a></li>
+                    <li class="nav-item"><a id="navHab" class="nav-link" href="#habilidades"> Habilidades</a></li>
+                    <li class="nav-item"><a id="navPro" class="nav-link" href="#proyectos"> Proyectos</a></li>
+                    <li class="nav-item"><a id="navCon" class="nav-link" href="#about"> Contacto</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
-
-    <div class="container ps-0" style="margin-top: 90px !important;">
-        <!-- CONTROLES DE REPRODUCCION -->
-        <div class="row mx-auto border border-dark p-2 shadow cbreproduccion" >
-            <button id="btnReproduccion" type="button" class="col-lg-1 col-6 ms-0  botonPlay boton"><i id="iconoReproduccion" class="fas fa-play"></i></button>
-            <button id="btnStop" type="button" class="col-lg-1 col-6 ms-0 botonStop boton"><i class="fas fa-stop"></i></button>
-            <h6 class="col-lg-1 text-end align-middle my-auto mx-auto">Idioma:</h6>
-            <div class="form-group col-lg-2 col-sm-12 mt-1 p-0" >                
-                <select class="form-control form-select w-100" id="listaIdiomas">
-                    <option value="es-" selected>Español</option>
-                    <option value="en-">Inglés</option>
-                    <option value="fr-">Francés</option>
-                    <option value="zh-">Mandarín</option>
-                    <option value="ru-">Ruso</option>
-                    <option value="otros">Otros</option>                    
-                </select>
+    
+    <!-- Contenido -->
+    <div class="container-fluid h-100 p-0 mx-0">
+        <div class="row h-100 p-0 mx-0">
+            <!-- BARRA DE NAVEGACION VERTICAL-->            
+            <div id="navLateral" class="col-lg-2 col-12 h-100 d-none d-lg-grid position-fixed" >
+                <img class="imgPersonal mx-auto d-block mt-3" src="img/FotoPersonal.png" alt="" srcset="">
+                <h5 class="text-center mt-2">Brayan Acosta</h5>
+                <h6 class="dropdown">
+                    <span class="nav-link dropdown-toggle lenga" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="far fa-language"></i> <i id="barLenguaje" class="inav">Lenguaje</i>
+                    </span>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li onclick="traducir(0)"><a id="bandEspana" class="dropdown-item" ><img src="img/banderaEspana.png" alt="Bandera de España" class="imgNavBarl"> Español</a></li>
+                        <li onclick="traducir(1)"><a id="bandIngles" class="dropdown-item" ><img src="img/banderaUsa.png" alt="Bandera de USA" class="imgNavBarl"> English</a></li>
+                        <li onclick="traducir(2)"><a id="bandFrances" class="dropdown-item" ><img src="img/banderaFrancia.png" alt="Bandera de Francia" class="imgNavBarl"> Français</a></li>
+                    </ul>
+                </h6>              
+                <h6 id="inicioi" class="text-center mt-3 ti boton act" onclick="scrolTo(0)">Inicio</h6>                
+                <h6 id="habilidadesi" class="text-center mt-3 ti boton" onclick="scrolTo(2)">Habilidades</h6>
+                <h6 id="proyectosi" class="text-center mt-3 ti boton" onclick="scrolTo(3)">Proyectos</h6>
+                <h6 id="abouti" class="text-center mt-3 ti boton" onclick="scrolTo(1)">Contacto</h6>
             </div>
-            <h6 class="col-lg-1 text-end align-middle my-auto ms-auto">Voz:</h6>
-            <div class="form-group col-lg-5 col-sm-12 mt-1">
-                <select class="form-control form-select" id="listaVoces">
-                </select>
-            </div>
-            <hr class="col-12 my-2">
-            <!--------- RANGES O SLIDERS ---------->
-            <!-- VOLUMEN -->
-            <h6 class="form-label col-lg-2 col-sm-4 my-auto text-end" >Volumen: <i class="rslider" id="textoVolumen">1</i> </h6>
-            <div class="form-group col-lg-2 col-sm-8 my-auto ms-0 ps-0">
-                <input type="range" class="form-range " min="0.0" max="1" value="1" step="0.1" id="volumen" >
-            </div>
-
-            <!-- VELOCIDAD -->
-            <h6 class="form-label col-lg-2 col-sm-4 my-auto text-end" id="">Velocidad: <i class="rslider" id="textoVelocidad">1.1</i> </h6>
-            <div class="form-group col-lg-2 col-sm-8 my-auto">
-                <input type="range" class="form-range " min="0.5" max="2" value="1.1" step="0.1" id="velocidad">
-            </div>
-
-            <h6 class="form-label col-lg-1 col-sm-4 my-auto ms-auto text-end" id="">Tono: <i class="rslider" id="textoTono">0.9</i></h6>
-            <div class="form-group col-lg-2 col-sm-8 my-auto">
-                <input type="range" class="form-range " min="0.5" max="2" value="0.9" step="0.1" id="tono">
+            <!-- CONTENIDO -->
+            <div class="col-lg-10 h-100 text-white p-0 ms-lg-auto">
+                <!-- INICIO -->
+                <section id="inicio" class="p-0 h-100 text-center" >
+                    <div class="scontenido h-100 w-100 d-flex align-items-center justify-content-center">
+                        <div class="">
+                            <h2 id="par01" class="">Bienvenido!</h2>
+                            <div id="typed-strings">
+                                <p id="par02">Soy Brayan Acosta</p>
+                                <p id="par03">Soy desarrollador web</p>
+                            </div>
+                            <span id="typed" class="display-4"></span>
+                            <div class="row">
+                                <div id="par04" class="btn botonC boton mx-auto mt-4" onclick="scrolTo(1)">Contactame</div>
+                            </div>                                                       
+                        </div>
+                        <h4 id="flechad" onclick="scrolTo(2)"><i class="fas fa-chevron-down"></i></h4>
+                    </div>                    
+                </section>                
+                <!-- HABILIDADES -->
+                <section id="habilidades" class="ranura2" >
+                    <div class="position-relative text-center" >
+                        <h1 id="tituloHab1" class="tituloGen2">SERVICIOS</h1>
+                        <h1 class="position-absolute text-white top-50 start-50 translate-middle" ><i id="par05" class="inav">Habilidades</i><span class="lineaB"></span></h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-3 d-flex justify-content-end align-content-center">
+                                    <div class="cajaIcono d-flex justify-content-center align-content-center">
+                                        <i class="far fa-pen-fancy icono align-self-center"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <h4 id="habi01" >Vectorización de imagenes.</h4>
+                                    <P id="par06" class="tgris" style="color: #999c99;"> 
+                                        Convercion de bocetos en imagenes vectoriales, a traves del programa Adobe Illustrator.
+                                    </P>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-3 d-flex justify-content-end align-content-center">
+                                    <div class="cajaIcono d-flex justify-content-center align-content-center">
+                                        <i class="fad fa-browser icono align-self-center"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <h4 id="par07">Desarrollo web.</h4>
+                                    <P id="par08" class="tgris" style="color: #999c99;"> 
+                                        Creacion de paginas web con Php, Javascript, Html, Css, librerias de exportacion Pdf Y Excel.
+                                    </P>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-3 d-flex justify-content-end align-content-center">
+                                    <div class="cajaIcono d-flex justify-content-center align-content-center">
+                                        <i class="far fa-images icono align-self-center"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <h4 id="par09">Edición de imágenes.</h4>
+                                    <P id="par10" class="tgris" style="color: #999c99;"> 
+                                        Modificacion basica de imagenes con Adobe Photoshop.
+                                    </P>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-3 d-flex justify-content-end align-content-center">
+                                    <div class="cajaIcono d-flex justify-content-center align-content-center">
+                                        <i class="fas fa-database icono align-self-center"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <h4 id="par11">Bases de datos.</h4>
+                                    <P id="par12" class="tgris" style="color: #999c99;"> 
+                                        Manejo basico de base de datos MySql y Firebase.
+                                    </P>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-3 d-flex justify-content-end align-content-center">
+                                    <div class="cajaIcono d-flex justify-content-center align-content-center">
+                                        <i class="fas fa-question icono align-self-center"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <P id="par13" class="tgris" style="color: #999c99;"> 
+                                        Siempre estoy dispuesto en aprender nuevas tecnolgias, si no se algo, buscare la informacion necesaria. 
+                                    </P>
+                                </div>
+                            </div>                            
+                        </div>                        
+                    </div>
+                </section>
+                <!-- PROYECTOS -->
+                <section id="proyectos" class="ranura1" >
+                    <div class="position-relative text-center" >
+                        <h1 id="par14" class="tituloGen3">PORTAFOLIO</h1>
+                        <h1 class="position-absolute text-white top-50 start-50 translate-middle" > <i id="par15" class="inav">Proyectos.</i><span class="lineaB"></span></h1>
+                    </div>                    
+                    <div class="row d-flex justify-content-evenly">                        
+                        <div id="CAdminExpe" class="col-lg-3 col-5 contImgCard position-relative">                            
+                            <img src="img/AdminExpedientes3.png" class="imgCard">
+                            <div class="position-absolute contenedorText d-flex align-items-center">
+                                <div class="row tcr">
+                                    <h5 id="par16" class="w-100">Expedientes Médicos.</h5>
+                                    <h6 id="par17" class="w-100">Administración.</h6>
+                                </div>                                
+                            </div>                            
+                        </div>
+                        <div id="CANovel" class="col-lg-3 col-5 contImgCard position-relative">                            
+                            <img src="img/AudioNovelasLigeras3.png" class="imgCard">
+                            <div class="position-absolute contenedorText d-flex align-items-center">
+                                <div class="row tcr">
+                                    <h5 id="par18" class="w-100">Audio Novelas.</h5>
+                                    <h6 id="par19" class="w-100">Entretenimiento</h6>
+                                </div>                                
+                            </div>                            
+                        </div>
+                    </div>
+                </section>
+                <!-- CONTACTO -->
+                <section id="about" class="ranura2" >
+                    <div class="position-relative text-center" >
+                        <h1 id="tituloAba1" class="tituloGen2">CONTACTO</h1>
+                        <h1 class="position-absolute text-white top-50 start-50 translate-middle"><i id="par43" class="inav">Informacion de Contacto.</i><span class="lineaB"></span></h1>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-8 tgris px-5 text-center text-lg-start">
+                            <h3 id="tituloAba3"> <i id="par44" class="inav">Saludos, Soy</i><i class="tt">&nbsp; Brayan Acosta,</i></h3>
+                            <p  id="par45">
+                                Me emociona todo lo relacionado con la programación web y la vectorización de imágenes. Al realizar un trabajo constantemente me enfoco en encontrar la forma de optimizar los procesos de la empresa.
+                            </p>
+                            <p  id="par46">
+                                Como persona organizada y con una gran motivación, soy capaz de adaptarme a cualquier circunstancia y dar siempre lo mejor de mí en cualquier proyecto.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 col-10 mt-lg-0 mt-3 cuadroAba2 mx-auto ">
+                            <h6><i class="fas fa-phone-alt tti"></i>&nbsp; <i id="par47" class="negrita">Telefono: </i>&nbsp; (504) 3316 6012</h6>
+                            <hr class="linea">
+                            <h6><i class="fas fa-envelope tti"></i>&nbsp; <i id="par48" class="negrita">Correo: </i>&nbsp;<i class="tt">bdacarcamo@gmail.com</i></h6>
+                            <hr class="linea">
+                            <h6><i class="fas fa-home tti"></i>&nbsp; <i id="par49" class="negrita">Direccion: </i>&nbsp;Santa Rosa, Honduras</h6>                            
+                            <hr class="linea">
+                            <!-- <h6><i class="negrita">Edad: </i>&nbsp; 31</h6> -->
+                            <h6 id="btnDescarga" class="botonA boton mt-4">Descargar CV</h6>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-        <!-- TITULO DEL CAPITULO -->
-        <h4 class="text-center mt-2"><u>Titulo de Novela</u></h4>
-        <div class="d-flex justify-content-center">
-            <button id="btnAnterior" class="btn col-lg-1 mx-0 boton">Anterior</button>
-            <div class="row col-lg-1 mx-1 px-1 cPagina">
-                <h5 class="cmenu col-4 my-auto ps-1 boton"><i class="fas fa-list-ul"></i></h5>                
-                <h5 class="col-8 my-auto text-center pagina">1200</h5>                
-            </div>
-            <button id="btnSiguiente" class="btn col-lg-1 ms-0 boton">Siguiente</button>
-        </div>
-        <!-- CONTENEDOR DE TEXTO A REPRODUCIR -->
-        <textarea id="texto" readonly class="form-control-plaintext mt-3" rows="5" >    
-        </textarea>
     </div>
 
+    <div class="d-none">
+        <div id="descripcionProyecto" class="container pt-2 dsProject">
+            <h4 id="par20" class="text-center my-3">Administración de Expedientes Médicos.</h4>
+            <div class="row">
+                <div class="col-md-7 d-flex align-content-center">
+                    <img src="img/AdminExpedientes.png" class="img-fluid mx-auto" alt="" srcset="">
+                </div>
+                <div class="col-md-5 text-start">
+                    <h6 id="par21" class="mt-2">Información de proyecto:</h6>
+                    <p id="par22" class="tgris">
+                        El usuario podra crear, editar, eliminar y exportar en pdf los expedientes de sus pacientes,tambien podra gestionar que usuarios tendran acceso a los datos de su clinica.
+                    </p>
+                    <h6 id="par23" class="">Detalles del proyecto:</h6>
+                    <h6 class="mt-4"> <i id="par24" class="subT">Industria:</i>  &nbsp; &nbsp;<i id="par25" class="tgris">Medicina</i></h6>
+                    <hr class="linea">
+                    <h6 class="mt-2"><i id="par26" class="subT">Tecnologías:</i> &nbsp; &nbsp;<i id="par27" class="tgris">PHP, MYSQL, JAVASCRIPT, HTML5, CSS3.</i></h6>
+                    <hr class="linea">
+                    <h6 class="mt-4"> <i id="par28" class="subT">Fecha:</i>  &nbsp; &nbsp;<i id="par29" class="tgris">30/06/2022</i></h6>
+                    <hr class="linea">
+                    <h6 class="mt-2"><i id="par30" class="subT">URL:</i> &nbsp; &nbsp;<i id="par31" class="tt">www.ejemplo.com</i></h6>
+                    <hr class="linea">
+                </div>
+            </div>
+        </div>
+        <div id="descripcionProyecto2" class="container pt-2 dsProject">
+            <h4 id="par32" class="text-center my-3">Audio Novelas Ligeras.</h4>
+            <div class="row">
+                <div class="col-md-7 d-flex align-content-center">
+                    <img src="img/AudioNovelasLigeras.png" class="img-fluid mx-auto" alt="" srcset="">
+                </div>
+                <div class="col-md-5 text-start">
+                    <h6 id="par33" class="mt-2">Informacion de proyecto:</h6>
+                    <p id="par34" class="tgris">
+                        El usuario podra escuchar las novelas disponibles dentro del sitio, tambien podra pegar su propio texto y escucharlo. El administrador del sitio cuenta con una interface amigable con multiples herramientas para facilitar la actualizacion del contenido.
+                    </p>
+                    <h6 id="par35" class="">Detalles del proyecto:</h6>
+                    <h6 class="mt-4"> <i id="par36" class="subT">Industria:</i>  &nbsp; &nbsp;<i id="par37" class="tgris">Entretenimiento</i></h6>
+                    <hr class="linea">
+                    <h6 class="mt-2"><i id="par38" class="subT">Tecnologías:</i> &nbsp; &nbsp;<i id="par39" class="tgris">FIREBASE, JAVASCRIPT, HTML5, CSS3.</i></h6>
+                    <hr class="linea">
+                    <h6 class="mt-4"> <i id="par40" class="subT">Fecha:</i>  &nbsp; &nbsp;<i id="par41" class="tgris">30/03/2022</i></h6>
+                    <hr class="linea">
+                    <h6 class="mt-2"><i id="par42" class="subT">URL:</i> &nbsp; &nbsp;<i class="tt">https://audionovelasligeras.xyz</i></h6>
+                    <hr class="linea">
+                </div>
+            </div>
+        </div>
+    </div>    
 
-    <!-- librerias JS -->
-	<script src="librerias/jquery-3.6.0.min.js"></script>
+    <!-- LIBRERIAS JS -->
+    <script src="librerias/jquery-3.6.0.min.js"></script>
     <script src="librerias/popper/popper.min.js"></script>
-	<script src="librerias/bootstrap-5.1.3/js/bootstrap.min.js"></script>
-    <script src="librerias/FileSaver/FileSaver.min.js"></script>
-    <script src="librerias/alertifyjs/alertify.min.js"></script>
-    <script type="text/javascript" src="js/index.js" ></script>
+    <script src="librerias/bootstrap-5.1.3/js/bootstrap.min.js"></script>
+    <script src="librerias/typed/typed.min.js"></script>
+    
+    <script src="librerias/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
-
 </html>
